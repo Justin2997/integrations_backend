@@ -1,0 +1,8 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: basic
+spec:
+  backend:
+    serviceName: integration65-service
+    servicePort: 80

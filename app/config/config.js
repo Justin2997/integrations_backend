@@ -1,7 +1,7 @@
 var config = {};
 
 config.database = {
-  host     : '35.226.234.235',
+  host     : '10.38.128.3',
   user     : 'integration65',
   password : 'integ65!',
   database : 'integ65',

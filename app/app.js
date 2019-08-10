@@ -107,7 +107,7 @@ app.post("/scan", function(req, res) {
 
   var user = userByUID(uid, function(user) {
     if (user === null) {
-      res.end(JSON.stringify({response: "bracelet_vide"}));
+      res.end(JSON.stringify({response: "bracelet_vide", prenom: user.Prenom, nom: user.Nom}));
     } 
     else {
       var sql = 'SELECT * FROM bracelet WHERE uid = "' + uid + '";';

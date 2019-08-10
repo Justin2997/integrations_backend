@@ -94,7 +94,7 @@ app.post("/jumeler", function(req, res) {
         else res.end(JSON.stringify({response: "UID enregistré"}));
       });
     } else {
-      res.end(JSON.stringify({response: "deja_jumeler", prenom: user.Prenom, nom: user.Nom}));
+      res.end(JSON.stringify({response: "deja_jumeler", prenom: user.prenom, nom: user.nom}));
     }
   });
 });
@@ -104,10 +104,9 @@ app.post("/jumeler", function(req, res) {
 app.post("/scan", function(req, res) {
   var activite = req.body.activite;
   var uid = req.body.uid;
-
   var user = userByUID(uid, function(user) {
     if (user === null) {
-      res.end(JSON.stringify({response: "bracelet_vide", prenom: user.Prenom, nom: user.Nom}));
+      res.end(JSON.stringify({response: "bracelet_vide"}));
     } 
     else {
       var sql = 'SELECT * FROM bracelet WHERE uid = "' + uid + '";';
@@ -115,7 +114,7 @@ app.post("/scan", function(req, res) {
         if (err) res.end(JSON.stringify({response: "ERREUR"}));
         else {
           if (user_scan[0][activite] == 1) {
-            res.end(JSON.stringify({response: "deja_participe", prenom: user.Prenom, nom: user.Nom}));
+            res.end(JSON.stringify({response: "deja_participe", prenom: user.prenom, nom: user.nom}));
           }
           else {
             var sql = 'UPDATE bracelet SET ' + activite + ' = 1 WHERE uid = "' + uid + '";';

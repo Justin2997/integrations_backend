@@ -76,7 +76,7 @@ app.get("/find", function(req, res) {
 
 // Return stats on activities
 app.get("/stats", function(req, res) {
-  var sql = "SELECT SUM(`mechoui`) AS mechoui ,SUM(`mardi_in`) AS mardi_in ,SUM(`mardi_out`) AS mardi_out ,SUM(`mercredi_souper`) AS mercredi_souper ,SUM(`jeudi_diner`) AS jeudi_diner FROM bracelet;";
+  var sql = "SELECT SUM(`mechoui`) AS mechoui ,SUM(`mardi_in`) AS mardi_in ,SUM(`mardi_out`) AS mardi_out ,SUM(`lundi_souper`) AS lundi_souper ,SUM(`jeudi_diner`) AS jeudi_diner, SUM(`biere_jeudi`) AS biere_jeudi, SUM(`biere_mardi`) AS biere_mardi FROM bracelet;";
   connection.query(sql, function(err, stats) {
     if (err) res.end();
     res.end(JSON.stringify(stats[0]));
